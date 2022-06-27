@@ -55,34 +55,33 @@ function changeColor(chart, labels) {
     const newChartData = [];
 
     
-    for (const _ of labels) {
-        const randomNum = Math.floor(Math.random() * 100) + 1; // start from 1 to 100;
-        newChartData.push(randomNum);
-    }
+    // for (const _ of labels) {
+    //     const randomNum = Math.floor(Math.random() * 100) + 1; // start from 1 to 100;
+    //     newChartData.push(randomNum);
+    // }
 
     chart.data.datasets.forEach((dataset) => {
         // dataset.data = newChartData;
         const bgColor = [];
 
-        console.log(dataset)
-        console.log(dataset.data) // array of bar value
-        console.log(dataset.backgroundColor) //bgcolor
-
-        for (let i = 0; i < dataset.data.length; i++) {
-        console.log(dataset.data[i], "value di dlm array")
-        if (dataset.data[i] >= 0 && dataset.data[i] <= 25) {
+        for (const val of dataset.data) {
+        console.log(val, "value di dlm array")
+        if (val >= 0 && val <= 25) {
         bgColor.push('rgb(9,128,17)')
-        } else if (dataset.data[i] >= 26 && dataset.data[i] <= 50 ) {
+        } else if (val >= 26 && val <= 50 ) {
         bgColor.push('rgb(255,255,15)')
-        } else if (dataset.data[i] >= 51 && dataset.data[i] <= 75) {
+        } else if (val >= 51 && val <= 75) {
         bgColor.push('rgb(255,0,0)')
-        } else if (dataset.data[i] <= 76 && dataset.data[i] <= 100) {
+        } else if (val <= 76 && val <= 100) {
         bgColor.push('rgb(0,0,255)')
         }
     }
-    // console.log(bgColor)
-    dataset.data = newChartData;
+    // console.log(bgColor, "ini bgcolor")
+    console.log(dataset.data, "ini datasetnya")
+    // dataset.data = newChartData
+    // console.log(newChartData, "ini datanya hasil random")
     dataset.backgroundColor = bgColor;
+    // console.log(dataset.backgroundColor, "ini bg-nya")
 });
     chart.update();
 
